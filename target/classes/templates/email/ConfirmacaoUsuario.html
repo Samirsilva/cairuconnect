@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:remove="all">Confirmação de cadastro</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h1>
+			Nome do usuario: <span th:text="${usuario.nome}"> </span>
+		</h1>
+		<p>
+			Email para acesso: <span th:text="${usuario.email}"> </span>
+		</p>
+		<p>
+			CPF ou CNPJ: <span th:text="${usuario.cpfOuCnpj}"></span>
+		</p>
+		<p>
+			Senha de acesso: <span th:text="${usuario.senha}"></span>
+		</p>
+		<p>Não fez essa confirmação? entre em contato com o administrador</p>
+	</div>
+</body>
+</html>

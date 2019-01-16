@@ -63,7 +63,7 @@ public class NoticiaController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_NOTICIA')")
+	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_NOTICIA', 'USUARIO')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<NoticiaRequest>> findAll() {
 		List<Noticia> list = service.findAll();

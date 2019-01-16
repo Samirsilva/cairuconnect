@@ -63,7 +63,7 @@ public class OportunidadeProfissionalController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_OPORTUNIDADE')")
+	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_OPORTUNIDADE', 'USUARIO')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<OportunidadeProfissionalRequest>> findAll() {
 		List<OportunidadeProfissional> list = service.findAll();

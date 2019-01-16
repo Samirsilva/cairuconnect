@@ -63,7 +63,7 @@ public class EventoController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO')")
+	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO', 'USUARIO')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<EventoRequest>> findAll() {
 		List<Evento> list = service.findAll();

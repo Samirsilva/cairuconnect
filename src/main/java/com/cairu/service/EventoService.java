@@ -66,7 +66,7 @@ public class EventoService {
 		return eventoRepository.findAll();
 	}
 
-	public Page<Evento> findPage(Integer page, Integer linesPage, String orderBy, String direction) {
+	public Page<Evento> findPageEvento(Integer page, Integer linesPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPage, Direction.valueOf(direction), orderBy);
 
 		return eventoRepository.findAll(pageRequest);

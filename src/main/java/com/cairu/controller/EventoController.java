@@ -72,15 +72,15 @@ public class EventoController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO')")
-	@RequestMapping(value = "/page" , method = RequestMethod.GET)
+	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO', 'USUARIO')")
+	@RequestMapping(value = "/pageEventos" , method = RequestMethod.GET)
 	public ResponseEntity<Page<EventoRequest>> findPage(
 			@RequestParam(name= "page", defaultValue = "0") Integer page, 
-			@RequestParam(name= "linesPage", defaultValue = "24")Integer linesPage, 
+			@RequestParam(name= "linesPage", defaultValue = "1")Integer linesPage, 
 			@RequestParam(name= "orderBy", defaultValue = "nome")String orderBy, 
 			@RequestParam(name= "direction", defaultValue = "DESC")String direction) {
 		
-		Page<Evento> list = service.findPage(page, linesPage, orderBy, direction);
+		Page<Evento> list = service.findPageEvento(page, linesPage, orderBy, direction);
 		Page<EventoRequest> listRequest = list.map(obj -> new EventoRequest(obj));
 
 		return ResponseEntity.ok().body(listRequest);

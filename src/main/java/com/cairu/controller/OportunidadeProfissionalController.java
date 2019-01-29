@@ -72,7 +72,7 @@ public class OportunidadeProfissionalController {
 		return ResponseEntity.ok().body(requestList);
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_OPORTUNIDADE')")
+	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO', 'USUARIO')")
 	@RequestMapping(value = "/page" , method = RequestMethod.GET)
 	public ResponseEntity<Page<OportunidadeProfissionalRequest>> findPage(
 			@RequestParam(name= "page", defaultValue = "0") Integer page, 

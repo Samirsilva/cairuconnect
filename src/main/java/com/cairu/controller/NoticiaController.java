@@ -72,7 +72,7 @@ public class NoticiaController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_NOTICIA')")
+	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO', 'USUARIO')")
 	@RequestMapping(value = "/page" , method = RequestMethod.GET)
 	public ResponseEntity<Page<NoticiaRequest>> findPage(
 			@RequestParam(name= "page", defaultValue = "0") Integer page, 

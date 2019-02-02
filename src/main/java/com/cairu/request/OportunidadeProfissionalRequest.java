@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import com.cairu.model.OportunidadeProfissional;
 import com.cairu.model.enums.TipoVaga;
+import com.cairu.model.sqlserver.OportunidadeProfissional;
 
 public class OportunidadeProfissionalRequest implements Serializable {
 	private static final long serialVersionUID = 1L;

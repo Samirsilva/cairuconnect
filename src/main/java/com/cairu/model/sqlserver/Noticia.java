@@ -1,4 +1,4 @@
-package com.cairu.model;
+package com.cairu.model.sqlserver;
 
 import java.io.Serializable;
 
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.cairu.model.mysql.Usuario;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity

@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cairu.model.Usuario;
 import com.cairu.model.enums.TipoUsuario;
+import com.cairu.model.mysql.Usuario;
 import com.cairu.repository.UsuarioRepository;
 import com.cairu.request.NovoUsuarioRequest;
 import com.cairu.request.UsuarioRequest;

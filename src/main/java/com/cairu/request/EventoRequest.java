@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.cairu.model.Evento;
+import com.cairu.model.sqlserver.Evento;
 
 public class EventoRequest implements Serializable {
 	private static final long serialVersionUID = 1L;

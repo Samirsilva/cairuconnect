@@ -12,8 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.cairu.model.Evento;
-import com.cairu.model.Usuario;
+import com.cairu.model.mysql.Usuario;
+import com.cairu.model.sqlserver.Evento;
 import com.cairu.repository.EventoRepository;
 import com.cairu.request.EventoRequest;
 import com.cairu.service.exception.DataIntegrityException;

@@ -1,4 +1,4 @@
-package com.cairu.model;
+package com.cairu.model.mysql;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -17,6 +17,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.cairu.model.enums.TipoUsuario;
+import com.cairu.model.sqlserver.Evento;
+import com.cairu.model.sqlserver.Noticia;
+import com.cairu.model.sqlserver.OportunidadeProfissional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 

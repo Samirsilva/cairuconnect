@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.cairu.model.OportunidadeProfissional;
+import com.cairu.model.sqlserver.OportunidadeProfissional;
 import com.cairu.request.OportunidadeProfissionalRequest;
 import com.cairu.service.OportunidadeProfissionalService;
 

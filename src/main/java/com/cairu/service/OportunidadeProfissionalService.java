@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.cairu.model.OportunidadeProfissional;
+import com.cairu.model.sqlserver.OportunidadeProfissional;
 import com.cairu.repository.OportunidadeProfissionalRepository;
 import com.cairu.request.OportunidadeProfissionalRequest;
 import com.cairu.service.exception.DataIntegrityException;

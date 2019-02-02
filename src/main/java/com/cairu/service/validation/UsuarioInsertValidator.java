@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cairu.controller.exception.FieldMessage;
-import com.cairu.model.Usuario;
+import com.cairu.model.mysql.Usuario;
 import com.cairu.repository.UsuarioRepository;
 import com.cairu.request.NovoUsuarioRequest;
 

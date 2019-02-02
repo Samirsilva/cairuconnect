@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.cairu.model.Evento;
-import com.cairu.model.Noticia;
-import com.cairu.model.OportunidadeProfissional;
-import com.cairu.model.Usuario;
 import com.cairu.model.enums.TipoUsuario;
 import com.cairu.model.enums.TipoVaga;
+import com.cairu.model.mysql.Usuario;
+import com.cairu.model.sqlserver.Evento;
+import com.cairu.model.sqlserver.Noticia;
+import com.cairu.model.sqlserver.OportunidadeProfissional;
 import com.cairu.repository.EventoRepository;
 import com.cairu.repository.NoticiaRepository;
 import com.cairu.repository.OportunidadeProfissionalRepository;

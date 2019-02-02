@@ -11,8 +11,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cairu.model.Noticia;
-import com.cairu.model.Usuario;
+import com.cairu.model.mysql.Usuario;
+import com.cairu.model.sqlserver.Noticia;
 import com.cairu.repository.NoticiaRepository;
 import com.cairu.request.NoticiaRequest;
 import com.cairu.service.exception.DataIntegrityException;

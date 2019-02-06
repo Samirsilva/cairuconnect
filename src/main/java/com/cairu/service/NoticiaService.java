@@ -11,8 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cairu.model.mysql.Usuario;
-import com.cairu.model.sqlserver.Noticia;
+import com.cairu.model.Noticia;
 import com.cairu.repository.NoticiaRepository;
 import com.cairu.request.NoticiaRequest;
 import com.cairu.service.exception.DataIntegrityException;
@@ -24,8 +23,6 @@ public class NoticiaService {
 	@Autowired
 	private NoticiaRepository repo;
 	
-	@Autowired
-	private UsuarioService service;
 
 	public Noticia find(Integer id) {
 		Optional<Noticia> obj = repo.findById(id);
@@ -68,16 +65,16 @@ public class NoticiaService {
 	}
 
 	public Noticia fromDTO(NoticiaRequest noticeReq) {
-		Usuario usuario = service.find(noticeReq.getIdUsuario());
-		if(usuario == null) {
+/*		Usuario usuario = service.find(noticeReq.getIdUsuario());
+		if(usuario == null) {	
 			throw new IllegalArgumentException("Não existe usuario autorizado com esse id");
 		}
-		return new Noticia(noticeReq.getId(), noticeReq.getInforme(), noticeReq.getFonte(), usuario);
+		return new Noticia(notic, informe, texto, linkImg, fonte, data, nomeLink, video);*/
+		return null;
 	}
 
 	private void updateData(Noticia newNotice, Noticia notice) {
 		newNotice.setInforme(notice.getInforme());
 		newNotice.setFonte(notice.getFonte());
-		newNotice.setIdUsuario(notice.getIdUsuario());
 	}
 }

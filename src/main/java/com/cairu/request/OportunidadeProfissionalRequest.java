@@ -2,12 +2,12 @@ package com.cairu.request;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import com.cairu.model.enums.TipoVaga;
-import com.cairu.model.sqlserver.OportunidadeProfissional;
+import com.cairu.model.OportunidadeProfissional;
 
 public class OportunidadeProfissionalRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -16,15 +16,13 @@ public class OportunidadeProfissionalRequest implements Serializable {
 
 	private String nomeEmpresa;
 
-	private String curso;
-
-	private Integer semestre;
+	private String sexo;
 
 	@NotEmpty(message = "Preenchimento Obrigatório")
 	@Email(message = "Email inválido")
 	private String email;
 
-	private TipoVaga tipoVaga;
+	private String tipoVaga;
 
 	private Integer cargaHoraria;
 
@@ -34,7 +32,16 @@ public class OportunidadeProfissionalRequest implements Serializable {
 
 	private String requisitos;
 
-	private Integer idUsuario;
+	private LocalDate dataInicio;
+	
+	private LocalDate dataTermino;
+	
+	private String disponibilidade;
+	
+	private Integer quantidadeVagas;
+	
+	private String linkImg;
+
 	public OportunidadeProfissionalRequest() {
 
 	}
@@ -42,15 +49,18 @@ public class OportunidadeProfissionalRequest implements Serializable {
 	public OportunidadeProfissionalRequest(OportunidadeProfissional obj) {
 		id = obj.getId();
 		nomeEmpresa = obj.getNomeEmpresa();
-		curso = obj.getCurso();
-		semestre = obj.getSemestre();
+		sexo = obj.getSexo();
 		email = obj.getEmail();
 		tipoVaga = obj.getTipoVaga();
 		cargaHoraria = obj.getCargaHoraria();
 		remuneracao = obj.getRemuneracao();
 		beneficios = obj.getBeneficios();
 		requisitos = obj.getRequisitos();
-		idUsuario = obj.getIdUsuario().getId();
+		dataInicio = obj.getDataInicio();
+		dataTermino = obj.getDataTermino();
+		disponibilidade = obj.getDisponibilidade();
+		quantidadeVagas = obj.getQuantidadeVagas();
+		linkImg = obj.getLinkImg();
 	}
 
 	public Integer getId() {
@@ -69,21 +79,6 @@ public class OportunidadeProfissionalRequest implements Serializable {
 		this.nomeEmpresa = nomeEmpresa;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
-	public Integer getSemestre() {
-		return semestre;
-	}
-
-	public void setSemestre(Integer semestre) {
-		this.semestre = semestre;
-	}
 
 	public String getEmail() {
 		return email;
@@ -91,14 +86,6 @@ public class OportunidadeProfissionalRequest implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public TipoVaga getTipoVaga() {
-		return tipoVaga;
-	}
-
-	public void setTipoVaga(TipoVaga tipoVaga) {
-		this.tipoVaga = tipoVaga;
 	}
 
 	public Integer getCargaHoraria() {
@@ -133,13 +120,61 @@ public class OportunidadeProfissionalRequest implements Serializable {
 		this.requisitos = rquisitos;
 	}
 
-	public Integer getIdUsuario() {
-		return idUsuario;
+	public String getSexo() {
+		return sexo;
 	}
 
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
+	public String getTipoVaga() {
+		return tipoVaga;
+	}
+
+	public void setTipoVaga(String tipoVaga) {
+		this.tipoVaga = tipoVaga;
+	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataTermino() {
+		return dataTermino;
+	}
+
+	public void setDataTermino(LocalDate dataTermino) {
+		this.dataTermino = dataTermino;
+	}
+
+	public String getDisponibilidade() {
+		return disponibilidade;
+	}
+
+	public void setDisponibilidade(String disponibilidade) {
+		this.disponibilidade = disponibilidade;
+	}
+
+	public Integer getQuantidadeVagas() {
+		return quantidadeVagas;
+	}
+
+	public void setQuantidadeVagas(Integer quantidadeVagas) {
+		this.quantidadeVagas = quantidadeVagas;
+	}
+
+	public String getLinkImg() {
+		return linkImg;
+	}
+
+	public void setLinkImg(String linkImg) {
+		this.linkImg = linkImg;
+	}
+	
 	
 }

@@ -4,7 +4,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.mail.SimpleMailMessage;
 
-import com.cairu.model.mysql.Usuario;
+import com.cairu.model.Usuario;
 
 public interface EmailService {
 

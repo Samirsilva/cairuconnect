@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.cairu.model.mysql.Usuario;
+import com.cairu.model.Usuario;
 import com.cairu.repository.UsuarioRepository;
 import com.cairu.security.UserSS;
 

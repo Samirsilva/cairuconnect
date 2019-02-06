@@ -1,22 +1,18 @@
-package com.cairu.model.sqlserver;
+package com.cairu.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.cairu.model.enums.TipoVaga;
-import com.cairu.model.mysql.Usuario;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.Table;
 
 @Entity
+@Table(name= "nec_vagas")
 public class OportunidadeProfissional implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,41 +20,69 @@ public class OportunidadeProfissional implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "id", unique = true, nullable = false)
 	private Integer id;
-	private String nomeEmpresa;
-	private String curso;
-	private Integer semestre;
 	
-	@Column(unique = true)
+	@Column(name = "nomeempresa")
+	private String nomeEmpresa;
+		
+	@Column(name = "sexo")
+	private String sexo;
+	
+	@Column(name= "emailempresa", unique = true)
 	private String email;
-	private Integer tipoVaga;
+	
+	@Column(name = "tipovaga")
+	private String tipoVaga;
+	
+	@Column(name = "ch")
 	private Integer cargaHoraria;
+	
+	@Column(name = "remuneracao")
 	private BigDecimal remuneracao;
+	
+	@Column(name = "beneficios")
 	private String beneficios;
+	
+	@Column(name = "competencia")
 	private String requisitos;
-
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario_oportunidade")
-	private Usuario idUsuario;
+	
+	@Column(name = "datainicio")
+	private LocalDate dataInicio;
+	
+	@Column(name = "datatermino")
+	private LocalDate dataTermino;
+	
+	@Column(name = "disponibilidade")
+	private String disponibilidade;
+	
+	@Column(name = "qtvagas")
+	private Integer quantidadeVagas;
+	
+	@Column(name = "linkimagem")
+	private String linkImg;
 	
 	public OportunidadeProfissional() {
 
 	}
 
-	public OportunidadeProfissional(Integer id, String nomeEmpresa, String curso, Integer semestre, String email,
-			TipoVaga tipoVaga, Integer cargaHoraria, BigDecimal remuneracao, String beneficios, String requisitos, Usuario usuario) {
+	public OportunidadeProfissional(Integer id, String nomeEmpresa, String sexo,
+			String email, String tipoVaga, Integer cargaHoraria, BigDecimal remuneracao, String beneficios,
+			String requisitos, LocalDate dataInicio, LocalDate dataTermino, String disponibilidade,
+			Integer quantidadeVagas, String linkImg) {
 		super();
 		this.id = id;
 		this.nomeEmpresa = nomeEmpresa;
-		this.curso = curso;
-		this.semestre = semestre;
+		this.sexo = sexo;
 		this.email = email;
-		this.tipoVaga = (tipoVaga == null) ? null : tipoVaga.getCod();
+		this.tipoVaga = tipoVaga;
 		this.cargaHoraria = cargaHoraria;
 		this.remuneracao = remuneracao;
 		this.beneficios = beneficios;
 		this.requisitos = requisitos;
-		this.idUsuario = usuario;
+		this.dataInicio = dataInicio;
+		this.dataTermino = dataTermino;
+		this.disponibilidade = disponibilidade;
+		this.quantidadeVagas = quantidadeVagas;
+		this.linkImg = linkImg;
 	}
 
 	public Integer getId() {
@@ -77,22 +101,6 @@ public class OportunidadeProfissional implements Serializable {
 		this.nomeEmpresa = nomeEmpresa;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
-	public Integer getSemestre() {
-		return semestre;
-	}
-
-	public void setSemestre(Integer semestre) {
-		this.semestre = semestre;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -101,12 +109,12 @@ public class OportunidadeProfissional implements Serializable {
 		this.email = email;
 	}
 
-	public TipoVaga getTipoVaga() {
-		return TipoVaga.toEnum(tipoVaga);
+	public String getTipoVaga() {
+		return tipoVaga;
 	}
 
-	public void setTipoVaga(TipoVaga tipoVaga) {
-		this.tipoVaga = tipoVaga.getCod();
+	public void setTipoVaga(String tipoVaga) {
+		this.tipoVaga = tipoVaga;
 	}
 
 	public Integer getCargaHoraria() {
@@ -141,12 +149,52 @@ public class OportunidadeProfissional implements Serializable {
 		this.requisitos = requisitos;
 	}
 
-	public Usuario getIdUsuario() {
-		return idUsuario;
+	public String getSexo() {
+		return sexo;
 	}
 
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataTermino() {
+		return dataTermino;
+	}
+
+	public void setDataTermino(LocalDate dataTermino) {
+		this.dataTermino = dataTermino;
+	}
+
+	public String getDisponibilidade() {
+		return disponibilidade;
+	}
+
+	public void setDisponibilidade(String disponibilidade) {
+		this.disponibilidade = disponibilidade;
+	}
+
+	public Integer getQuantidadeVagas() {
+		return quantidadeVagas;
+	}
+
+	public void setQuantidadeVagas(Integer quantidadeVagas) {
+		this.quantidadeVagas = quantidadeVagas;
+	}
+
+	public String getLinkImg() {
+		return linkImg;
+	}
+
+	public void setLinkImg(String linkImg) {
+		this.linkImg = linkImg;
 	}
 
 	@Override

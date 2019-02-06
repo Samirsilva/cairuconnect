@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.cairu.model.sqlserver.Noticia;
+import com.cairu.model.Noticia;
 import com.cairu.request.NoticiaRequest;
 import com.cairu.service.NoticiaService;
 

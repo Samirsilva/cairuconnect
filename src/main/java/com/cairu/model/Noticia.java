@@ -1,20 +1,17 @@
-package com.cairu.model.sqlserver;
+package com.cairu.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.cairu.model.mysql.Usuario;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.Table;
 
 @Entity
+@Table(name= "noticia_site_cairu")
 public class Noticia implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,24 +20,43 @@ public class Noticia implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "id", unique = true, nullable = false)
 	private Integer id;
+	
+	@Column(name = "titulo")
 	private String informe;
+	
+	@Column(name = "texto")
+	private String texto;
+	
+	@Column(name = "img")
+	private String linkImg;
+	
+	@Column(name = "link")
 	private String fonte;
-
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario_noticia")
-	private Usuario idUsuario;
+	
+	@Column(name = "data")
+	private LocalDate data;
+	
+	@Column(name = "nome_link")
+	private String nomeLink;
+	
+	@Column(name = "video")
+	private String video;
 	
 	public Noticia() {
 
 	}
 
-	public Noticia(Integer id, String informe, String fonte, Usuario usuario) {
+	public Noticia(Integer id, String informe, String texto, String linkImg, String fonte, LocalDate data,
+			String nomeLink, String video) {
 		super();
 		this.id = id;
 		this.informe = informe;
+		this.texto = texto;
+		this.linkImg = linkImg;
 		this.fonte = fonte;
-		this.idUsuario = usuario;
+		this.data = data;
+		this.nomeLink = nomeLink;
+		this.video = video;
 	}
 
 	public Integer getId() {
@@ -67,12 +83,44 @@ public class Noticia implements Serializable {
 		this.fonte = fonte;
 	}
 
-	public Usuario getIdUsuario() {
-		return idUsuario;
+	public String getTexto() {
+		return texto;
 	}
 
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	public String getLinkImg() {
+		return linkImg;
+	}
+
+	public void setLinkImg(String linkImg) {
+		this.linkImg = linkImg;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public String getNomeLink() {
+		return nomeLink;
+	}
+
+	public void setNomeLink(String nomeLink) {
+		this.nomeLink = nomeLink;
+	}
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
 	}
 
 	@Override
@@ -83,6 +131,7 @@ public class Noticia implements Serializable {
 		return result;
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

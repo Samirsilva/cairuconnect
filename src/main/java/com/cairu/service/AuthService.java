@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.cairu.model.mysql.Usuario;
+import com.cairu.model.Usuario;
 import com.cairu.repository.UsuarioRepository;
 import com.cairu.service.exception.ObjectNotFoundException;
 

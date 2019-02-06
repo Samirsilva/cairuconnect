@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.cairu.controller.exception.FieldMessage;
-import com.cairu.model.mysql.Usuario;
+import com.cairu.model.Usuario;
 import com.cairu.repository.UsuarioRepository;
 import com.cairu.request.UsuarioRequest;
 

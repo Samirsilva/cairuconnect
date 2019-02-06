@@ -1,11 +1,10 @@
-package com.cairu.model.mysql;
+package com.cairu.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -14,16 +13,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.cairu.model.enums.TipoUsuario;
-import com.cairu.model.sqlserver.Evento;
-import com.cairu.model.sqlserver.Noticia;
-import com.cairu.model.sqlserver.OportunidadeProfissional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@Table(name= "usuario")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,18 +42,6 @@ public class Usuario implements Serializable {
 	@CollectionTable(name = "tipo_usuario")
 	@Column(name = "tipos_de_usuario")
 	private Set<Integer> tiposDeUsuario = new HashSet<Integer>();
-	
-	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idUsuario", cascade = {CascadeType.ALL})
-	private Set<Evento> eventos = new HashSet<Evento>();
-
-	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idUsuario", cascade = {CascadeType.ALL})
-	private Set<Noticia> noticias = new HashSet<Noticia>();
-	
-	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idUsuario", cascade = {CascadeType.ALL})
-	private Set<OportunidadeProfissional> oportunidades = new HashSet<OportunidadeProfissional>();
 	
 	public Usuario() {
 		addTipoUsuario(TipoUsuario.USUARIO);
@@ -120,30 +104,6 @@ public class Usuario implements Serializable {
 
 	public void addTipoUsuario(TipoUsuario tipo) {
 		tiposDeUsuario.add(tipo.getCod());
-	}
-
-	public Set<Evento> getEventos() {
-		return eventos;
-	}
-
-	public void setEventos(Set<Evento> eventos) {
-		this.eventos = eventos;
-	}
-
-	public Set<Noticia> getNoticias() {
-		return noticias;
-	}
-
-	public void setNoticias(Set<Noticia> noticias) {
-		this.noticias = noticias;
-	}
-
-	public Set<OportunidadeProfissional> getOportunidades() {
-		return oportunidades;
-	}
-
-	public void setOportunidades(Set<OportunidadeProfissional> oportunidades) {
-		this.oportunidades = oportunidades;
 	}
 
 	@Override

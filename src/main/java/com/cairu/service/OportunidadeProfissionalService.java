@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.cairu.model.sqlserver.OportunidadeProfissional;
+import com.cairu.model.OportunidadeProfissional;
 import com.cairu.repository.OportunidadeProfissionalRepository;
 import com.cairu.request.OportunidadeProfissionalRequest;
 import com.cairu.service.exception.DataIntegrityException;
@@ -22,8 +22,6 @@ public class OportunidadeProfissionalService {
 	@Autowired
 	private OportunidadeProfissionalRepository repo;
 	
-	@Autowired
-	private UsuarioService service;
 
 	public OportunidadeProfissional find(Integer id) {
 		Optional<OportunidadeProfissional> obj = repo.findById(id);
@@ -40,7 +38,6 @@ public class OportunidadeProfissionalService {
 
 	public OportunidadeProfissional update(OportunidadeProfissional obj) {
 		OportunidadeProfissional newObj = find(obj.getId());
-		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
 
@@ -64,21 +61,10 @@ public class OportunidadeProfissionalService {
 	}
 	
 	public OportunidadeProfissional fromDTO(OportunidadeProfissionalRequest opRequest) {
-		return new OportunidadeProfissional(opRequest.getId(), opRequest.getNomeEmpresa(), opRequest.getCurso()
-				, opRequest.getSemestre(), opRequest.getEmail(), opRequest.getTipoVaga(),opRequest.getCargaHoraria()
-				, opRequest.getRemuneracao(), opRequest.getBeneficios(), opRequest.getRequisitos(), service.find(opRequest.getIdUsuario()));
+		return new OportunidadeProfissional(opRequest.getId(), opRequest.getNomeEmpresa(), opRequest.getSexo()
+				, opRequest.getEmail(), opRequest.getTipoVaga(),opRequest.getCargaHoraria()
+				, opRequest.getRemuneracao(), opRequest.getBeneficios(), opRequest.getRequisitos(), opRequest.getDataInicio()
+				, opRequest.getDataTermino(), opRequest.getDisponibilidade(), opRequest.getQuantidadeVagas(), opRequest.getLinkImg());
 	}
-	
-	private void updateData(OportunidadeProfissional newObj, OportunidadeProfissional obj) {
-		newObj.setNomeEmpresa(obj.getNomeEmpresa());
-		newObj.setCurso(obj.getCurso());
-		newObj.setSemestre(obj.getSemestre());
-		newObj.setEmail(obj.getEmail());
-		newObj.setTipoVaga(obj.getTipoVaga());
-		newObj.setCargaHoraria(obj.getCargaHoraria());
-		newObj.setRemuneracao(obj.getRemuneracao());
-		newObj.setBeneficios(obj.getBeneficios());
-		newObj.setRequisitos(obj.getRequisitos());
-		newObj.setIdUsuario(obj.getIdUsuario());
-	}	
+
 }

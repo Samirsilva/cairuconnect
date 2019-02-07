@@ -42,16 +42,22 @@ public abstract class AbstractEmailService implements EmailService{
 		return sm;		
 	}
 
-	protected String htmlFromTemplatePedido(Usuario obj) {
+	protected String htmlFromTemplateCadastro(Usuario obj) {
 		Context context = new Context();
 		context.setVariable("usuario", obj);
 		return templateEngine.process("email/ConfirmacaoUsuario", context);
 	}
 	
+	protected String htmlFromTemplateRecuperacao(String newPass) {
+		Context context = new Context();
+		context.setVariable("newPass", newPass);
+		return templateEngine.process("email/Recuperacao", context);
+	}
+	
 	@Override
 	public void sendOrderConfirmationHtmlEmail(Usuario obj) {
 		try {
-			MimeMessage mm = prepareMimeMessageFromPedido(obj);
+			MimeMessage mm = prepareMimeMessageFromCadastro(obj);
 			sendHtmlEmail(mm);
 		}
 		catch (MessagingException e) {
@@ -59,30 +65,36 @@ public abstract class AbstractEmailService implements EmailService{
 		}
 	}
 	
-	protected MimeMessage prepareMimeMessageFromPedido(Usuario obj) throws MessagingException {
+	protected MimeMessage prepareMimeMessageFromCadastro(Usuario obj) throws MessagingException {
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
 		mmh.setTo(obj.getEmail());
 		mmh.setFrom(sender);
-		mmh.setSubject(obj.getId() + "seu cadastro foi efetuado com sucesso.");
+		mmh.setSubject("Cadastro foi efetuado com sucesso.");
 		mmh.setSentDate(new Date(System.currentTimeMillis()));
-		mmh.setText(htmlFromTemplatePedido(obj), true);
+		mmh.setText(htmlFromTemplateCadastro(obj), true);
 		return mimeMessage;
 	}	
 	
 	@Override
 	public void sendNewPasswordEmail(Usuario usuario, String newPass) {
-		SimpleMailMessage sm = prepareNewPasswordEmail(usuario, newPass);
-		sendEmail(sm);
+		try {
+			MimeMessage mm = prepareNewPasswordEmail(usuario, newPass);
+			sendHtmlEmail(mm);
+		}
+		catch (MessagingException e) {
+			sendOrderConfirmationEmail(usuario);
+		}
 	}
 	
-	protected SimpleMailMessage prepareNewPasswordEmail(Usuario usuario, String newPass) {
-		SimpleMailMessage sm = new SimpleMailMessage();
-		sm.setTo(usuario.getEmail());
-		sm.setFrom(sender);
-		sm.setSubject("Solicitação de nova senha CAIRU CONNECT");
-		sm.setSentDate(new Date(System.currentTimeMillis()));
-		sm.setText("Nova senha: " + newPass);
-		return sm;
+	protected MimeMessage prepareNewPasswordEmail(Usuario usuario, String newPass) throws MessagingException {
+		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
+		mmh.setTo(usuario.getEmail());
+		mmh.setFrom(sender);
+		mmh.setSubject("Recuperação de senha Cairu Connect");
+		mmh.setSentDate(new Date(System.currentTimeMillis()));
+		mmh.setText(htmlFromTemplateRecuperacao(newPass), true);
+		return mimeMessage;
 	}
 }

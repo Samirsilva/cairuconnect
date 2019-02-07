@@ -1,5 +1,6 @@
 package com.cairu.controller;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -36,7 +37,7 @@ public class AuthController {
 	}
 	
 	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
-	public ResponseEntity<Void> forgot(@Valid @RequestBody EmailRequest objDto) {
+	public ResponseEntity<Void> forgot(@Valid @RequestBody EmailRequest objDto) throws MessagingException {
 		service.sendNewPassword(objDto.getEmail());
 		return ResponseEntity.noContent().build();
 	}

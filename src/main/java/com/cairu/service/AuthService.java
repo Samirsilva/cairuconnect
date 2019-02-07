@@ -2,6 +2,8 @@ package com.cairu.service;
 
 import java.util.Random;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class AuthService {
 	
 	private Random rand = new Random();
 	
-	public void sendNewPassword(String email) {
+	public void sendNewPassword(String email) throws MessagingException {
 		
 		Usuario usuario = usuarioRepository.findByEmail(email);
 		if (usuario == null) {

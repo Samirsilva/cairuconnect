@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cairu.model.EmailRequest;
+import com.cairu.model.TrocaSenhaRequest;
 import com.cairu.security.JWTUtil;
 import com.cairu.security.UserSS;
 import com.cairu.service.AuthService;
@@ -39,6 +40,12 @@ public class AuthController {
 	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
 	public ResponseEntity<Void> forgot(@Valid @RequestBody EmailRequest objDto) throws MessagingException {
 		service.sendNewPassword(objDto.getEmail());
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value = "/trocar_senha", method = RequestMethod.POST)
+	public ResponseEntity<Void> trocarSenha(@Valid @RequestBody TrocaSenhaRequest request){
+		service.trocarSenha(request);
 		return ResponseEntity.noContent().build();
 	}
 }

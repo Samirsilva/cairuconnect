@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.cairu.model.TrocaSenhaRequest;
 import com.cairu.model.Usuario;
 import com.cairu.repository.UsuarioRepository;
 import com.cairu.service.exception.ObjectNotFoundException;
@@ -40,6 +41,22 @@ public class AuthService {
 		emailService.sendNewPasswordEmail(usuario, newPass);
 	}
 
+	public void trocarSenha(TrocaSenhaRequest request) {
+		
+		Usuario usuario = usuarioRepository.findByEmail(request.getEmail());
+		if (usuario == null) {
+			throw new ObjectNotFoundException("Email não encontrado");
+		}
+		
+		if(request.getSenha().equals(request.getSenhaConfirmacao())) {
+			usuario.setSenha(pe.encode(request.getSenha()));
+		}else {
+			throw new ObjectNotFoundException("Senhas não conferem");
+
+		}				
+		usuarioRepository.save(usuario);
+	}
+	
 	private String newPassword() {
 		char[] vet = new char[10];
 		for (int i=0; i<10; i++) {

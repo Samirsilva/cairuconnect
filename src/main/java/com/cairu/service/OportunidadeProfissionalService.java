@@ -63,8 +63,8 @@ public class OportunidadeProfissionalService {
 	public OportunidadeProfissional fromDTO(OportunidadeProfissionalRequest opRequest) {
 		return new OportunidadeProfissional(opRequest.getId(), opRequest.getNomeEmpresa(), opRequest.getSexo()
 				, opRequest.getEmail(), opRequest.getTipoVaga(),opRequest.getCargaHoraria()
-				, opRequest.getRemuneracao(), opRequest.getBeneficios(), opRequest.getRequisitos(), opRequest.getDataInicio()
-				, opRequest.getDataTermino(), opRequest.getDisponibilidade(), opRequest.getQuantidadeVagas(), opRequest.getLinkImg());
+				, opRequest.getRemuneracao(), opRequest.getBeneficios(), opRequest.getRequisitos()
+				, opRequest.getDisponibilidade(), opRequest.getQuantidadeVagas(), opRequest.getLinkImg());
 	}
 
 }

@@ -3,6 +3,7 @@ package com.cairu.request;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -32,9 +33,9 @@ public class OportunidadeProfissionalRequest implements Serializable {
 
 	private String requisitos;
 
-	private LocalDate dataInicio;
+	private LocalDateTime dataInicio;
 	
-	private LocalDate dataTermino;
+	private LocalDateTime dataTermino;
 	
 	private String disponibilidade;
 	
@@ -136,19 +137,19 @@ public class OportunidadeProfissionalRequest implements Serializable {
 		this.tipoVaga = tipoVaga;
 	}
 
-	public LocalDate getDataInicio() {
+	public LocalDateTime getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(LocalDate dataInicio) {
+	public void setDataInicio(LocalDateTime dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public LocalDate getDataTermino() {
+	public LocalDateTime getDataTermino() {
 		return dataTermino;
 	}
 
-	public void setDataTermino(LocalDate dataTermino) {
+	public void setDataTermino(LocalDateTime dataTermino) {
 		this.dataTermino = dataTermino;
 	}
 

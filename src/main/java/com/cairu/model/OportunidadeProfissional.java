@@ -3,6 +3,7 @@ package com.cairu.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,10 +47,10 @@ public class OportunidadeProfissional implements Serializable {
 	private String requisitos;
 	
 	@Column(name = "datainicio")
-	private LocalDate dataInicio;
+	private LocalDateTime dataInicio;
 	
 	@Column(name = "datatermino")
-	private LocalDate dataTermino;
+	private LocalDateTime dataTermino;
 	
 	@Column(name = "disponibilidade")
 	private String disponibilidade;
@@ -66,7 +67,7 @@ public class OportunidadeProfissional implements Serializable {
 
 	public OportunidadeProfissional(Integer id, String nomeEmpresa, String sexo,
 			String email, String tipoVaga, Integer cargaHoraria, BigDecimal remuneracao, String beneficios,
-			String requisitos, LocalDate dataInicio, LocalDate dataTermino, String disponibilidade,
+			String requisitos, LocalDateTime dataInicio, LocalDateTime dataTermino, String disponibilidade,
 			Integer quantidadeVagas, String linkImg) {
 		super();
 		this.id = id;
@@ -157,19 +158,19 @@ public class OportunidadeProfissional implements Serializable {
 		this.sexo = sexo;
 	}
 
-	public LocalDate getDataInicio() {
+	public LocalDateTime getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(LocalDate dataInicio) {
+	public void setDataInicio(LocalDateTime dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public LocalDate getDataTermino() {
+	public LocalDateTime getDataTermino() {
 		return dataTermino;
 	}
 
-	public void setDataTermino(LocalDate dataTermino) {
+	public void setDataTermino(LocalDateTime dataTermino) {
 		this.dataTermino = dataTermino;
 	}
 

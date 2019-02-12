@@ -51,7 +51,7 @@ public class OportunidadeProfissionalService {
 	}
 
 	public List<OportunidadeProfissional> findAll() {
-		return repo.findAll();
+		return repo.findAllByOrderByIdDesc();
 	}
 
 	public Page<OportunidadeProfissional> findPage(Integer page, Integer linesPage, String orderBy, String direction) {

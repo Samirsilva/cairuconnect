@@ -1,7 +1,6 @@
 package com.cairu.request;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -26,8 +25,6 @@ public class NoticiaRequest implements Serializable {
 	@Length(min = 5, max = 700, message = "O tamanho deve ser entre 5 e 700 caracteres")
 	private String fonte;
 	
-	private LocalDate data;
-	
 	private String nomeLink;
 	
 	private String video;
@@ -41,7 +38,6 @@ public class NoticiaRequest implements Serializable {
 		texto = obj.getTexto();
 		imgLink = obj.getLinkImg();
 		fonte = obj.getFonte();
-		data = obj.getData();
 		nomeLink = obj.getNomeLink();
 		video = obj.getNomeLink();
 	}
@@ -84,14 +80,6 @@ public class NoticiaRequest implements Serializable {
 
 	public void setImgLink(String imgLink) {
 		this.imgLink = imgLink;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
 	}
 
 	public String getNomeLink() {

@@ -55,7 +55,7 @@ public class NoticiaService {
 	}
 
 	public List<Noticia> findAll() {
-		return repo.findAll();
+		return repo.findAllByOrderByIdDesc();
 	}
 
 	public Page<Noticia> findPage(Integer page, Integer linesPage, String orderBy, String direction) {

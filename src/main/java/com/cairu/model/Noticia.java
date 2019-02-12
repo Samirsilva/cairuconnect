@@ -1,7 +1,6 @@
 package com.cairu.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,9 +32,6 @@ public class Noticia implements Serializable {
 	@Column(name = "link")
 	private String fonte;
 	
-	@Column(name = "data")
-	private LocalDate data;
-	
 	@Column(name = "nome_link")
 	private String nomeLink;
 	
@@ -46,7 +42,7 @@ public class Noticia implements Serializable {
 
 	}
 
-	public Noticia(Integer id, String informe, String texto, String linkImg, String fonte, LocalDate data,
+	public Noticia(Integer id, String informe, String texto, String linkImg, String fonte,
 			String nomeLink, String video) {
 		super();
 		this.id = id;
@@ -54,7 +50,6 @@ public class Noticia implements Serializable {
 		this.texto = texto;
 		this.linkImg = linkImg;
 		this.fonte = fonte;
-		this.data = data;
 		this.nomeLink = nomeLink;
 		this.video = video;
 	}
@@ -97,14 +92,6 @@ public class Noticia implements Serializable {
 
 	public void setLinkImg(String linkImg) {
 		this.linkImg = linkImg;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
 	}
 
 	public String getNomeLink() {

@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cairu.model.Evento;
 import com.cairu.repository.EventoRepository;
-import com.cairu.request.NoticiaRequest;
+import com.cairu.request.EventoRequest;
 import com.cairu.service.exception.DataIntegrityException;
 import com.cairu.service.exception.ObjectNotFoundException;
 
@@ -64,7 +64,7 @@ public class EventoService {
 		return repo.findAll(pageRequest);
 	}
 
-	public Evento fromDTO(NoticiaRequest noticeReq) {
+	public Evento fromDTO(EventoRequest noticeReq) {
 /*		Usuario usuario = service.find(noticeReq.getIdUsuario());
 		if(usuario == null) {	
 			throw new IllegalArgumentException("Não existe usuario autorizado com esse id");

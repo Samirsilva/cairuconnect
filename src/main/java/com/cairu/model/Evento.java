@@ -29,16 +29,20 @@ public class Evento implements Serializable {
 	@Column(name = "descricao")
 	private String descricao;
 	
+	@Column(name = "img")
+	private String img;
+	
 	public Evento() {
 
 	}
 
-	public Evento(Integer id, String nome, String periodoLetivo, String descricao) {
+	public Evento(Integer id, String nome, String periodoLetivo, String descricao, String img) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.periodoLetivo = periodoLetivo;
 		this.descricao = descricao;
+		this.img = img;
 	}
 
 	public Integer getId() {
@@ -71,6 +75,14 @@ public class Evento implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	@Override

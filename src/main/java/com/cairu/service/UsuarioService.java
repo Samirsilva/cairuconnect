@@ -112,7 +112,7 @@ public class UsuarioService {
 	}
 	
 	public Usuario fromDTO(UsuarioRequest userReq) {
-		return new Usuario(userReq.getId(), userReq.getNome(), userReq.getEmail(), userReq.getCpfOuCnpj(),
+		return new Usuario(userReq.getId(), userReq.getNome(), userReq.getEmail(), userReq.getCpfCnpj(),
 				pe.encode(userReq.getSenha()));
 	}
 
@@ -124,7 +124,7 @@ public class UsuarioService {
 	private void updateData(Usuario newUser, Usuario user) {
 		newUser.setNome(user.getNome());
 		newUser.setEmail(user.getEmail());
-		newUser.setCpfOuCnpj(user.getCpfOuCnpj());
+		newUser.setCpfCnpj(user.getCpfCnpj());
 		newUser.setSenha(pe.encode(user.getSenha()));
 	}
 	

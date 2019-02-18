@@ -37,7 +37,7 @@ public class NovoUsuarioRequest implements Serializable {
 	public NovoUsuarioRequest(Usuario obj) {
 		nome = obj.getNome();
 		email = obj.getEmail();
-		cpfOuCnpj = obj.getCpfOuCnpj();
+		cpfOuCnpj = obj.getCpfCnpj();
 		senha = obj.getSenha();
 
 	}

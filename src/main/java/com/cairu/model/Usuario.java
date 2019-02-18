@@ -33,6 +33,7 @@ public class Usuario implements Serializable {
 	@Column(unique = true)
 	private String email;
 	
+	@Column(name= "cpfcnpj", unique = true, nullable = false)
 	private String cpfOuCnpj;
 
 	@JsonIgnore

@@ -26,7 +26,7 @@ public class UsuarioRequest implements Serializable {
 
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min = 11, max = 14, message = "O tamanho deve ser entre 11 a 14 caracteres")
-	private String cpfOuCnpj;
+	private String cpfCnpj;
 
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min = 5, max = 10, message = "O tamanho deve ser entre 5 a 10 caracteres")
@@ -40,7 +40,7 @@ public class UsuarioRequest implements Serializable {
 		id = obj.getId();
 		nome = obj.getNome();
 		email = obj.getEmail();
-		cpfOuCnpj = obj.getCpfOuCnpj();
+		cpfCnpj = obj.getCpfCnpj();
 		senha = obj.getSenha();
 
 	}
@@ -69,12 +69,12 @@ public class UsuarioRequest implements Serializable {
 		this.email = email;
 	}
 
-	public String getCpfOuCnpj() {
-		return cpfOuCnpj;
+	public String getCpfCnpj() {
+		return cpfCnpj;
 	}
 
-	public void setCpfOuCnpj(String cpfOuCnpj) {
-		this.cpfOuCnpj = cpfOuCnpj;
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 
 	public String getSenha() {

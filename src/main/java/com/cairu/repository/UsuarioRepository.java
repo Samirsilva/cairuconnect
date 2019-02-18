@@ -13,5 +13,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	Usuario findByEmail (String email);
 	
 	@Transactional(readOnly = true)
-	Usuario findByCpf (String email);
+	Usuario findByCpfCnpj (String cpfCnpj);
 }

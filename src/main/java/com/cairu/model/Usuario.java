@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
 	private String email;
 	
 	@Column(name= "cpfcnpj", unique = true, nullable = false)
-	private String cpfOuCnpj;
+	private String cpfCnpj;
 
 	@JsonIgnore
 	private String senha;
@@ -48,12 +48,12 @@ public class Usuario implements Serializable {
 		addTipoUsuario(TipoUsuario.USUARIO);
 	}
 
-	public Usuario(Integer id, String nome, String email, String cpfOuCnpj, String senha) {
+	public Usuario(Integer id, String nome, String email, String cpfCnpj, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.cpfOuCnpj = cpfOuCnpj;
+		this.cpfCnpj = cpfCnpj;
 		this.senha = senha;
 		addTipoUsuario(TipoUsuario.USUARIO);
 
@@ -83,12 +83,12 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public String getCpfOuCnpj() {
-		return cpfOuCnpj;
+	public String getCpfCnpj() {
+		return cpfCnpj;
 	}
 
-	public void setCpfOuCnpj(String cpfOuCnpj) {
-		this.cpfOuCnpj = cpfOuCnpj;
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 
 	public String getSenha() {
@@ -139,8 +139,7 @@ public class Usuario implements Serializable {
 		builder.append(nome);
 		builder.append(", Email: ");
 		builder.append(email);
-		builder.append(", CpfOuCnpj: ");
-		builder.append(cpfOuCnpj);
+		builder.append(cpfCnpj);
 		return builder.toString();
 	}
 	

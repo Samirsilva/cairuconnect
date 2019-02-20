@@ -117,7 +117,7 @@ public class UsuarioService {
 	}
 
 	public Usuario fromDTO(NovoUsuarioRequest userReq) {
-		return new Usuario(null, userReq.getNome(), userReq.getEmail(), userReq.getCpfOuCnpj(),
+		return new Usuario(null, userReq.getNome(), userReq.getEmail(), userReq.getCpfCnpj(),
 				pe.encode(userReq.getSenha()));
 	}
 

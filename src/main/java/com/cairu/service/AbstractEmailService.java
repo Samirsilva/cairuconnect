@@ -92,7 +92,7 @@ public abstract class AbstractEmailService implements EmailService{
 		MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
 		mmh.setTo(usuario.getEmail());
 		mmh.setFrom(sender);
-		mmh.setSubject("Recuperação de senha Cairu Connect");
+		mmh.setSubject("Recuperação de senha Conect Cairu");
 		mmh.setSentDate(new Date(System.currentTimeMillis()));
 		mmh.setText(htmlFromTemplateRecuperacao(newPass), true);
 		return mimeMessage;

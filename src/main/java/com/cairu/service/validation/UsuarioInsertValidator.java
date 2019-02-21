@@ -30,6 +30,11 @@ public class UsuarioInsertValidator implements ConstraintValidator<UsuarioInsert
 		if(aux != null) {
 			list.add(new FieldMessage("email", "Email já existente"));
 		}
+		Usuario aux2 = repo.findByCpfCnpj(objRequest.getCpfCnpj());
+		if(aux2 != null) {
+			list.add(new FieldMessage("cpfCnpj", "CPF ou CNPJ já existente"));
+
+		}
 		
 		for (FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();

@@ -78,6 +78,7 @@ public class OportunidadeProfissionalController {
 				o.setSexo("Feminino");
 			}
 			if(o.getSexo().toLowerCase() == "A") {
+				LOGGER.info("entrou");
 				o.setSexo("Ambos");
 			}
 			if(o.getSexo().toLowerCase() == "m") {

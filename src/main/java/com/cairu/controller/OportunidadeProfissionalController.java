@@ -37,8 +37,27 @@ public class OportunidadeProfissionalController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<OportunidadeProfissional> find(@PathVariable Integer id) {
 		OportunidadeProfissional obj = service.find(id);
+		
+		OportunidadeProfissional objNovo = obj;
 
-		return ResponseEntity.ok().body(obj);
+		if(objNovo.getSexo().equals("F")) {
+			objNovo.setSexo("Feminino");
+		}
+		if(objNovo.getSexo().equals("A")) {
+			LOGGER.info("entrou");
+			objNovo.setSexo("Ambos");
+		}
+		if(objNovo.getSexo().equals("M")) {
+			objNovo.setSexo("Masculino");
+		}
+		
+		if(objNovo.getTipoVaga().equals("clt")) {
+			objNovo.setTipoVaga("Emprego");
+		}
+		if(objNovo.getTipoVaga().equals("est")) {
+			objNovo.setTipoVaga("Estágio");
+		}
+		return ResponseEntity.ok().body(objNovo);
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_OPORTUNIDADE')")

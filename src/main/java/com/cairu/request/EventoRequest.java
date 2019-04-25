@@ -1,6 +1,7 @@
 package com.cairu.request;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import com.cairu.model.Evento;
 
@@ -15,6 +16,8 @@ public class EventoRequest implements Serializable {
 	
 	private String periodoLetivo;
 	
+	private LocalDate data;
+	
 	public EventoRequest() {
 
 	}
@@ -24,6 +27,7 @@ public class EventoRequest implements Serializable {
 		nome = obj.getNome();
 		descricao = obj.getDescricao();
 		periodoLetivo = obj.getPeriodoLetivo();
+		data = obj.getData();
 
 	}
 
@@ -59,6 +63,16 @@ public class EventoRequest implements Serializable {
 		this.periodoLetivo = periodoletivo;
 	}
 
+	public LocalDate getData() {
+		return data;
+	}
 
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public void setPeriodoLetivo(String periodoLetivo) {
+		this.periodoLetivo = periodoLetivo;
+	}
 
 }

@@ -1,6 +1,7 @@
 package com.cairu.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,39 +11,43 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "evento")
+@Table(name = "evento")
 public class Evento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "id", unique = true, nullable = false)
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "periodoletivo")
 	private String periodoLetivo;
-	
+
 	@Column(name = "descricao")
 	private String descricao;
-	
+
 	@Column(name = "img")
 	private String img;
-	
+
+	@Column(name = "data")
+	private LocalDate data;
+
 	public Evento() {
 
 	}
 
-	public Evento(Integer id, String nome, String periodoLetivo, String descricao, String img) {
+	public Evento(Integer id, String nome, String periodoLetivo, String descricao, String img, LocalDate data) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.periodoLetivo = periodoLetivo;
 		this.descricao = descricao;
 		this.img = img;
+		this.data = data;
 	}
 
 	public Integer getId() {
@@ -85,6 +90,14 @@ public class Evento implements Serializable {
 		this.img = img;
 	}
 
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,7 +106,6 @@ public class Evento implements Serializable {
 		return result;
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

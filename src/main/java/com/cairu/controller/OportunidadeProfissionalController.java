@@ -1,6 +1,7 @@
 package com.cairu.controller;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -72,6 +73,7 @@ public class OportunidadeProfissionalController {
 	public ResponseEntity<List<OportunidadeProfissionalRequest>> findAll() {
 		List<OportunidadeProfissional> list = service.findAll();
 		List<OportunidadeProfissionalRequest> requestList = list.stream().map(obj -> new OportunidadeProfissionalRequest(obj)).collect(Collectors.toList());
+		List<OportunidadeProfissionalRequest> requestListNova = new ArrayList<OportunidadeProfissionalRequest>();
 		for(OportunidadeProfissionalRequest o : requestList) {
 			LOGGER.info("ANTES: " +o.getSexo());
 			if(o.getSexo().equals("F")) {
@@ -86,15 +88,15 @@ public class OportunidadeProfissionalController {
 			}
 			
 			if(o.getTipoVaga().equals("clt")) {
-				o.setSexo("Emprego");
+				o.setTipoVaga("Emprego");
 			}
 			if(o.getTipoVaga().equals("est")) {
-				o.setSexo("Estágio");
+				o.setTipoVaga("Estágio");
 			}
 			LOGGER.info("Depois: " +o.getSexo());
-
+			requestListNova.add(o);
 		}
-		return ResponseEntity.ok().body(requestList);
+		return ResponseEntity.ok().body(requestListNova);
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN', 'ADMIN_EVENTO', 'USUARIO')")

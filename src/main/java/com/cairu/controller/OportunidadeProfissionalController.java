@@ -2,6 +2,7 @@ package com.cairu.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -18,14 +19,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.amazonaws.services.apigateway.model.Op;
 import com.cairu.model.OportunidadeProfissional;
 import com.cairu.request.OportunidadeProfissionalRequest;
 import com.cairu.service.OportunidadeProfissionalService;
 
+
 @RestController
 @RequestMapping(value = "/oportunidades")
 public class OportunidadeProfissionalController {
+
+    private static final Logger LOGGER = Logger.getLogger(OportunidadeProfissionalController.class.getName());
 
 	@Autowired
 	private OportunidadeProfissionalService service;
@@ -70,6 +73,7 @@ public class OportunidadeProfissionalController {
 		List<OportunidadeProfissional> list = service.findAll();
 		List<OportunidadeProfissionalRequest> requestList = list.stream().map(obj -> new OportunidadeProfissionalRequest(obj)).collect(Collectors.toList());
 		for(OportunidadeProfissionalRequest o : requestList) {
+			LOGGER.info("ANTES: " +o.getSexo());
 			if(o.getSexo().toLowerCase() == "f") {
 				o.setSexo("Feminino");
 			}
@@ -86,6 +90,8 @@ public class OportunidadeProfissionalController {
 			if(o.getTipoVaga().toLowerCase() == "est") {
 				o.setSexo("Estágio");
 			}
+			LOGGER.info("Depois: " +o.getSexo());
+
 		}
 		return ResponseEntity.ok().body(requestList);
 	}

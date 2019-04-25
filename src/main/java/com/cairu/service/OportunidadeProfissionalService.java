@@ -51,27 +51,7 @@ public class OportunidadeProfissionalService {
 	}
 
 	public List<OportunidadeProfissional> findAll() {
-		List<OportunidadeProfissional> listaVaga = repo.findAllByOrderByIdDesc();
-		for(OportunidadeProfissional o : listaVaga) {
-			if(o.getSexo().equals("F")) {
-				o.setSexo("Feminino");
-			}
-			if(o.getSexo().equals("A")) {
-				o.setSexo("Ambos");
-			}
-			if(o.getSexo().equals("M")) {
-				o.setSexo("Masculino");
-			}
-			
-			if(o.getTipoVaga().toLowerCase().equals("clt")) {
-				o.setSexo("Emprego");
-			}
-			if(o.getTipoVaga().toLowerCase().equals("est")) {
-				o.setSexo("Estágio");
-			}
-		}
-		
-		return listaVaga;
+		return repo.findAllByOrderByIdDesc();
 	}
 
 	public Page<OportunidadeProfissional> findPage(Integer page, Integer linesPage, String orderBy, String direction) {

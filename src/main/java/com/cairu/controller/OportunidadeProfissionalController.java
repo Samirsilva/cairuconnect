@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.amazonaws.services.apigateway.model.Op;
 import com.cairu.model.OportunidadeProfissional;
 import com.cairu.request.OportunidadeProfissionalRequest;
 import com.cairu.service.OportunidadeProfissionalService;
@@ -68,7 +69,24 @@ public class OportunidadeProfissionalController {
 	public ResponseEntity<List<OportunidadeProfissionalRequest>> findAll() {
 		List<OportunidadeProfissional> list = service.findAll();
 		List<OportunidadeProfissionalRequest> requestList = list.stream().map(obj -> new OportunidadeProfissionalRequest(obj)).collect(Collectors.toList());
-
+		for(OportunidadeProfissionalRequest o : requestList) {
+			if(o.getSexo().toLowerCase() == "f") {
+				o.setSexo("Feminino");
+			}
+			if(o.getSexo().toLowerCase() == "a") {
+				o.setSexo("Ambos");
+			}
+			if(o.getSexo().toLowerCase() == "m") {
+				o.setSexo("Masculino");
+			}
+			
+			if(o.getTipoVaga().toLowerCase() == "clt") {
+				o.setSexo("Emprego");
+			}
+			if(o.getTipoVaga().toLowerCase() == "est") {
+				o.setSexo("Estágio");
+			}
+		}
 		return ResponseEntity.ok().body(requestList);
 	}
 	

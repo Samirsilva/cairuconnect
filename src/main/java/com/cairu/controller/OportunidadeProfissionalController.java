@@ -74,24 +74,21 @@ public class OportunidadeProfissionalController {
 		List<OportunidadeProfissionalRequest> requestList = list.stream().map(obj -> new OportunidadeProfissionalRequest(obj)).collect(Collectors.toList());
 		for(OportunidadeProfissionalRequest o : requestList) {
 			LOGGER.info("ANTES: " +o.getSexo());
-			if(o.getSexo().toLowerCase() == "f") {
+			if(o.getSexo() == "F") {
 				o.setSexo("Feminino");
 			}
-			if(o.getSexo().toLowerCase() == "A") {
+			if(o.getSexo() == "A") {
 				LOGGER.info("entrou");
 				o.setSexo("Ambos");
-			}else {
-				LOGGER.info("nao entrou");
-
 			}
-			if(o.getSexo().toLowerCase() == "m") {
+			if(o.getSexo() == "M") {
 				o.setSexo("Masculino");
 			}
 			
-			if(o.getTipoVaga().toLowerCase() == "clt") {
+			if(o.getTipoVaga() == "clt") {
 				o.setSexo("Emprego");
 			}
-			if(o.getTipoVaga().toLowerCase() == "est") {
+			if(o.getTipoVaga() == "est") {
 				o.setSexo("Estágio");
 			}
 			LOGGER.info("Depois: " +o.getSexo());
